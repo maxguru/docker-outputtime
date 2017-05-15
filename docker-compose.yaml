@@ -1,0 +1,16 @@
+version: "2"
+services:
+  outputtime:
+    build:
+      context: .
+    volumes:
+      - ./data/uploads:/var/www/html/uploads
+    links:
+      - mysql
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: outputtime
+    volumes:
+      - ./data/mysql:/var/lib/mysql
