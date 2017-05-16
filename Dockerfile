@@ -11,6 +11,10 @@ RUN apt-get update \
 && ln -sf /dev/stdout /var/log/apache2/access.log \
 && ln -sf /dev/stderr /var/log/apache2/error.log
 
+ADD reverse-proxy.conf /etc/apache2/conf-available/reverse-proxy.conf
+RUN a2enmod remoteip \
+&& a2enconf reverse-proxy
+
 ADD "http://outputtime.com/releases/index.php?installer=webapp" /var/www/html/outputtime.zip
 
 WORKDIR /var/www/html/
