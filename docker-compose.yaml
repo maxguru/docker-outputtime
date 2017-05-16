@@ -5,6 +5,7 @@ services:
       context: .
     volumes:
       - ./data/uploads:/var/www/html/uploads
+      - ./data/config:/var/www/html/application/config
     links:
       - mysql
   mysql:
